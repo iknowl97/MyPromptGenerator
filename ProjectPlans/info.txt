@@ -1,0 +1,224 @@
+Okay, so the user wants me to create a design concept for a website using hero UI principles. Let me start by understanding their requirements. The website is called PromptGen Pro, aimed at generating AI prompts for different user personas. The target audience includes casual users, content creators, and AI agent developers. They need an intuitive first page with persona selection, integration with Open Router API, model recommendations, and dark/light theme adaptation.
+
+First, I need to recall what Hero UI principles are. Hero UI typically emphasizes a bold, visually striking header section that immediately captures attention. It uses large images, minimal text, and clear call-to-action buttons. The design should be responsive, with a focus on user experience and accessibility.
+
+The user mentioned three types of users. So the persona selection needs to be prominent. Maybe using interactive cards or buttons for each persona. The main page should guide users smoothly to choose their role. Also, since the site will adapt to different AI models, there should be a section explaining model recommendations, possibly with status indicators for free/paid models.
+
+The color scheme should be modern, maybe using gradients and dynamic elements. The dark/light theme toggle is important, so the design must look good in both modes. Using Hero UI's components like gradient backgrounds, sticky headers, and interactive cards can help here.
+
+The user wants the site to be accessible without registration, so the design must be straightforward without cluttering with sign-up prompts. Navigation should be simple, maybe a sticky header with links to documentation and model status.
+
+For the homepage, a hero section with a catchy headline and a search bar makes sense. Then a grid of cards for persona selection. Each card can have an icon, title, description, and relevant badges. Hover effects like glow or scale can enhance interactivity.
+
+The prompt generator page needs a form layout. A sidebar for switching personas and model recommendations, a main form for inputting task details, and a preview panel for the generated prompt. Advanced settings like n8n integration and creativity sliders should be toggleable to keep the form clean.
+
+The model status page requires a data grid or table showing models, their status, cost, and best use cases. Including a chart for performance metrics would add value. Documentation should have a sidebar nav and code blocks for setup instructions.
+
+I should also consider responsiveness. Hero UI components are usually responsive, but I need to ensure that the card grid adjusts on mobile, forms stack vertically, and tables scroll horizontally if needed.
+
+Security aspects like CSP headers and input sanitization are backend tasks, but the frontend should have clear error messages and validation indicators. Performance is crucial, so lazy loading images and efficient component rendering are necessary.
+
+Finally, the design must align with the tech stack: React with Hero UI, Node.js backend, MongoDB. Using Hero UI's built-in components will speed up development and ensure consistency. The documentation should be easy to navigate, with a clear hierarchy and search functionality.
+
+I think I covered all the points. Now, structuring this into a design concept with sections for visual hierarchy, components, interactions, and themes. Making sure each part aligns with the user's goals and technical requirements.
+
+Design Concept: "PromptGen Pro" - AI Prompt Engineering Platform
+Target Audience: AI Enthusiasts, Content Creators, & AI Agent Developers
+
+1. Hero UI Core Principles Applied
+Visual Hierarchy Mastery
+
+3-Zone Layout: Immediate persona selection → Contextual tools → Dynamic preview
+
+Eye path: Logo → Persona cards → Action button → Results
+
+tsx
+Copy
+<HeroUI.VisualFlow>
+  <BrandingZone />
+  <DecisionZone />
+  <ActionZone />
+</HeroUI.VisualFlow>
+Dynamic Contrast System
+
+Adaptive color scheme for dark/light modes using HSL variables:
+
+css
+Copy
+:root {
+  --primary-hue: 210; /* Trust blue */
+  --secondary-hue: 280; /* AI purple */
+  --interactive: hsl(var(--primary-hue), 89%, 53%);
+}
+Neuromorphic Depth
+
+Floating interface elements with soft shadows:
+
+css
+Copy
+.persona-card {
+  box-shadow: 8px 8px 16px var(--shadow-dark),
+             -8px -8px 16px var(--shadow-light);
+}
+2. Key Interface Components
+A. Persona Gateway (Above the Fold)
+Persona Selector Concept
+
+tsx
+Copy
+<HeroUI.PersonaGateway>
+  <HeroUI.HolographicCard 
+    persona="agent-developer" 
+    glowColor="#7F00FF"
+    interactionType="hover-tilt"
+  >
+    <HeroUI.ParallaxBadge 
+      text="n8n Integrated"
+      position="top-right"
+    />
+  </HeroUI.HolographicCard>
+</HeroUI.PersonaGateway>
+B. Smart Prompt Workshop
+
+Context-aware input field with real-time validation:
+
+tsx
+Copy
+<HeroUI.AIInput 
+  persona={selectedPersona}
+  validationRules={currentModel.limitations}
+  onGenerate={(prompt) => showPreview(prompt)}
+/>
+C. Model Intelligence Dashboard
+
+Live status board with filtering:
+
+tsx
+Copy
+<HeroUI.LiveDashboard>
+  <HeroUI.ResourceMeter 
+    model="gemini-2.5-pro" 
+    usage={45} 
+    limit={1000}
+    costPerUnit={0.015}
+  />
+  <HeroUI.HealthIndicator 
+    status={modelStatus.availability}
+    latency={modelStatus.responseTime}
+  />
+</HeroUI.LiveDashboard>
+3. Micro-Interaction Design
+Persona Transition
+
+Morphing animation between user types using FLIP technique
+
+js
+Copy
+animatePersonaChange({duration: 400, easing: 'cubic-bezier(0.4, 0, 0.2, 1)'})
+Prompt Generation Feedback
+
+Particle effect on successful generation:
+
+tsx
+Copy
+<HeroUI.ConfettiExplosion 
+  colors={[brandColors.primary, brandColors.secondary]}
+  particleCount={80}
+/>
+Model Switching
+
+Glitch effect when changing AI models:
+
+css
+Copy
+@keyframes model-switch {
+  0% { filter: contrast(150%); }
+  50% { clip-path: polygon(0 0, 100% 8%, 100% 92%, 0 100%); }
+}
+4. Adaptive Layout System
+Viewport-Based UI Modes
+
+Screen Size	Layout Mode	Features
+< 768px	Focus Flow	Vertical stack, simplified controls
+768-1440px	Workshop	Side-by-side prompt editor/preview
+> 1440px	Command Center	Triple pane (input/visualization/docs)
+tsx
+Copy
+<HeroUI.ResponsiveContext>
+  {(breakpoint) => (
+    breakpoint === 'mobile' ? <MobileFlow /> : <DesktopCommandCenter />
+  )}
+</HeroUI.ResponsiveContext>
+5. Accessibility Enhancements
+AI-Powered Alt Text
+
+tsx
+Copy
+<HeroUI.SmartImage 
+  src="/ai-workflow-diagram.png" 
+  alt={describeImageUsingAI(currentModel)}
+/>
+Context-Sensitive Help
+
+tsx
+Copy
+<HeroUI.GuidedTour 
+  triggers={['firstVisit', 'complexFeature']}
+  persona={selectedPersona}
+/>
+Voice Navigation Ready
+
+js
+Copy
+const voiceCommands = {
+  'generate prompt': () => triggerGeneration(),
+  'switch model': () => showModelSelector()
+};
+6. Performance Optimization Strategy
+AI Asset Loading
+
+tsx
+Copy
+<HeroUI.PredictiveLoader 
+  preload={['gemini-2.5-pro', 'deepseek-v3']} 
+  basedOn={userBehaviorHistory}
+/>
+Model Chunking System
+
+js
+Copy
+const loadModel = async (model) => {
+  const chunks = await splitModel(model);
+  return chunks.map(chunk => 
+    fetchModelChunk(chunk).withPriority(performance.now())
+};
+7. Design Handoff Package
+Figma Components
+
+Auto-layout persona cards
+
+Nested model status indicators
+
+Interactive prompt playground prototype
+
+Developer Guidance
+
+markdown
+Copy
+## Theme Implementation Steps
+1. Clone theme repo: `git clone https://github.com/hero-ui/themes`
+2. Import base config: `import { promptgenTheme } from '@hero-ui/promptgen-theme'`
+3. Extend with custom vars in `theme.config.js`
+Key Innovation:
+Adaptive Prompt Canvas - Context-aware workspace that morphs its toolset based on:
+
+Selected persona
+
+Chosen AI model capabilities
+
+Complexity level detected in user input
+
+Historical success patterns
+
+Would you like me to create specific style tiles, interaction flow prototypes, or detailed component specs for any particular section?
+

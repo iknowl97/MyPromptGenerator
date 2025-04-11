@@ -1,0 +1,63 @@
+Website Design Concept Using Hero UI Principles
+1. Target Audience
+Casual AI Users: Individuals who use AI chats for daily tasks, work, and entertainment.
+Content Creators: Users who generate content such as articles, videos, and more using AI tools.
+AI-Agent Developers: Professionals who create AI-agents for automation, chatbots, and other advanced tasks.
+2. Key Features
+A. Intuitive Homepage
+Hero Section:
+
+A prominent hero section at the top of the homepage with a clear and concise headline.
+Engaging visuals or animations that immediately capture the user's attention.
+A call-to-action (CTA) button that encourages users to explore further or sign up.
+User Selection:
+
+An intuitive selection tool that allows users to choose their category: "Разработчик ИИ-агентов," "ИИ Чаты," or other options.
+Quick toggles to switch between different prompt generators based on user needs.
+B. Prompt Generation Interface
+Interactive Prompt Builder:
+
+A user-friendly interface where users can input their requirements and receive tailored AI prompts.
+Real-time suggestions and autocomplete features to enhance the user experience.
+Customization Options:
+
+Options to customize the prompt based on the user's preferences and the AI model they are using.
+Advanced settings for power users who want more control over the prompt generation process.
+C. AI Service Recommendations
+Recommendation Section:
+A dedicated section that lists recommended AI services and models.
+Information on cost (free/paid) and availability, presented in a clean and organized manner.
+Useful links and resources for further exploration.
+D. n8n Integration
+Workflow Automation:
+Detailed guides and templates for creating n8n workflows.
+Integration options for various services, with step-by-step instructions.
+3. Design Principles
+A. Visual Hierarchy
+Use size, color, and placement to guide the user's attention to the most important elements on the page.
+Ensure that the hero section stands out and immediately communicates the website's purpose.
+B. Consistency
+Maintain a consistent design language throughout the website, including typography, color schemes, and button styles.
+Use a modern and clean design aesthetic that aligns with the Hero UI principles.
+C. Responsiveness
+Ensure the website is fully responsive and adapts to different screen sizes and devices.
+Test the design on mobile, tablet, and desktop to ensure a seamless user experience.
+D. Accessibility
+Implement accessibility features such as alt text for images, keyboard navigation, and ARIA labels.
+Ensure the website is usable by all users, including those with disabilities.
+E. Performance
+Optimize the website for fast loading times and smooth performance.
+Use efficient coding practices and minimize the use of large assets.
+4. Content Requirements
+A. Engaging Copy
+Write clear and engaging copy that resonates with the target audience.
+Use a conversational tone that makes the website approachable and user-friendly.
+B. High-Quality Visuals
+Incorporate high-quality images, icons, and graphics that enhance the visual appeal of the website.
+Use visuals that are relevant to the content and align with the overall design aesthetic.
+C. Call-to-Action (CTA)
+Place strategic CTAs throughout the website to encourage user engagement.
+Use compelling language and design to make CTAs stand out.
+5. Future Considerations
+Blog/Digest Integration: Plan for the future addition of a blog or daily digest for AI news and technologies.
+User Feedback: Implement mechanisms to gather user feedback and make continuous improvements.
