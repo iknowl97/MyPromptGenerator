@@ -12,6 +12,7 @@ import GeneratePage from './pages/GeneratePage';
 import ModelStatusPage from './pages/ModelStatusPage';
 import DocumentationPage from './pages/DocumentationPage';
 import NotFoundPage from './pages/NotFoundPage';
+import PromptGeneratorPage from './pages/PromptGeneratorPage';
 
 const App = () => {
   const { theme } = useTheme();
@@ -24,6 +25,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/generate" element={<GeneratePage />} />
+            <Route path="/prompt-generator" element={<PromptGeneratorPage />} />
             <Route path="/model-status" element={<ModelStatusPage />} />
             <Route path="/docs/*" element={<DocumentationPage />} />
             <Route path="*" element={<NotFoundPage />} />

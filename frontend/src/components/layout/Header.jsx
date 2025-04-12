@@ -37,25 +37,31 @@ const Header = () => {
               to="/" 
               className={`text-sm font-medium ${isActive('/') ? 'text-primary-600 dark:text-primary-400' : 'text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400'}`}
             >
-              Home
+              Главная
             </Link>
             <Link 
               to="/generate" 
               className={`text-sm font-medium ${isActive('/generate') ? 'text-primary-600 dark:text-primary-400' : 'text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400'}`}
             >
-              Generate Prompt
+              Генератор
+            </Link>
+            <Link 
+              to="/prompt-generator" 
+              className={`text-sm font-medium ${isActive('/prompt-generator') ? 'text-primary-600 dark:text-primary-400' : 'text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400'}`}
+            >
+              AI-Промпты
             </Link>
             <Link 
               to="/model-status" 
               className={`text-sm font-medium ${isActive('/model-status') ? 'text-primary-600 dark:text-primary-400' : 'text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400'}`}
             >
-              Model Status
+              Статус моделей
             </Link>
             <Link 
               to="/docs" 
               className={`text-sm font-medium ${isActive('/docs') ? 'text-primary-600 dark:text-primary-400' : 'text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400'}`}
             >
-              Documentation
+              Документация
             </Link>
           </nav>
 
@@ -90,28 +96,35 @@ const Header = () => {
               className={`block px-3 py-2 rounded-md text-base font-medium ${isActive('/') ? 'bg-primary-50 dark:bg-gray-800 text-primary-600 dark:text-primary-400' : 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-primary-600 dark:hover:text-primary-400'}`}
               onClick={closeMenu}
             >
-              Home
+              Главная
             </Link>
             <Link 
               to="/generate" 
               className={`block px-3 py-2 rounded-md text-base font-medium ${isActive('/generate') ? 'bg-primary-50 dark:bg-gray-800 text-primary-600 dark:text-primary-400' : 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-primary-600 dark:hover:text-primary-400'}`}
               onClick={closeMenu}
             >
-              Generate Prompt
+              Генератор
+            </Link>
+            <Link 
+              to="/prompt-generator" 
+              className={`block px-3 py-2 rounded-md text-base font-medium ${isActive('/prompt-generator') ? 'bg-primary-50 dark:bg-gray-800 text-primary-600 dark:text-primary-400' : 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-primary-600 dark:hover:text-primary-400'}`}
+              onClick={closeMenu}
+            >
+              AI-Промпты
             </Link>
             <Link 
               to="/model-status" 
               className={`block px-3 py-2 rounded-md text-base font-medium ${isActive('/model-status') ? 'bg-primary-50 dark:bg-gray-800 text-primary-600 dark:text-primary-400' : 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-primary-600 dark:hover:text-primary-400'}`}
               onClick={closeMenu}
             >
-              Model Status
+              Статус моделей
             </Link>
             <Link 
               to="/docs" 
               className={`block px-3 py-2 rounded-md text-base font-medium ${isActive('/docs') ? 'bg-primary-50 dark:bg-gray-800 text-primary-600 dark:text-primary-400' : 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-primary-600 dark:hover:text-primary-400'}`}
               onClick={closeMenu}
             >
-              Documentation
+              Документация
             </Link>
           </nav>
         )}

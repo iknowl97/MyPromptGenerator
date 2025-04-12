@@ -1,0 +1,405 @@
+Design Principles
+The development of HeroUI has been guided by a set of specific design and API principles. These principles serve as the foundation for our library and play a crucial role in ensuring the efficiency, effectiveness, and user-friendliness of the components we offer.
+
+Product Hunt
+We're live on Product Hunt! (30% OFF)
+Join the conversation and help us get #1 Product of the Week! ↗
+Simplicity and Usability
+Simplicity is the ultimate sophistication. At HeroUI, we believe in delivering simple and intuitive components. Our design process centers around the user, ensuring that we deliver tools that are easy to understand, configure, and implement, regardless of a developer's expertise level.
+
+Modular Design
+Each component in HeroUI is designed as a standalone module. This modular approach allows developers to import and use only what they need, leading to lighter applications and faster load times.
+
+Customization and Flexibility
+HeroUI is designed with customization at its core. Whether it's theming or overriding styles, we provide developers with comprehensive control over the aesthetics of the components. Our integration with the TailwindCSS and Tailwind Variants library and simplifies the customization process and enables an extensive range of design possibilities.
+
+Consistent API
+HeroUI maintains a consistent API across all components. We've ensured that common attributes function identically across different components, allowing developers to anticipate component behavior and thus reducing the learning curve.
+
+Accessibility
+We are committed to ensuring that our components are accessible to all users. In the development of HeroUI, accessibility standards and guidelines have been adhered to, ensuring our components work effectively with assistive technologies. For further information on how to make your web applications more accessible, refer to React Spectrum.
+
+Component Slots
+To provide maximum flexibility, many HeroUI components have slots, allowing developers to inject custom styles or content in specific areas of a component. Each slot can be individually styled, offering granular control over the appearance and behavior of the component.
+
+Through these principles, we aim to make HeroUI an effective, efficient, and enjoyable tool for developers to use. As we continue to expand and enhance HeroUI, these guiding principles will remain central to our design and development processes.
+
+Requirements:
+
+React 18 or later
+Tailwind CSS 3.4 (For Tailwind CSS v4, please refer to our beta version)
+Framer Motion 11.9 or later
+Installation
+Execute one of the following commands in your terminal:
+
+
+npm
+
+yarn
+
+pnpm
+
+bun
+Initialization and Starting the App
+Initialize the project by using the init command.
+
+You will be prompted to configure your project:
+
+Install the dependencies to start the local server:
+
+
+npm
+
+yarn
+
+pnpm
+
+bun
+Start the local server:
+
+
+npm
+
+yarn
+
+pnpm
+
+bun
+npm run dev
+Adding the Components
+Once your HeroUI project is ready to develop, you can add individual components using the CLI. For example, to add a button component:
+
+heroui add button
+This command adds the Button component to your project and manages all related dependencies.
+
+You can also add multiple components at once:
+
+heroui add button input
+Or you can add the main library @heroui/react by running the following command:
+
+heroui add --all
+
+
+// main.tsx or main.jsx
+import React from "react";
+import ReactDOM from "react-dom/client";
+import {HeroUIProvider} from "@heroui/react";
+import App from "./App";
+import "./index.css";
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <HeroUIProvider>
+      <main className="dark text-foreground bg-background">
+        <App />
+      </main>
+    </HeroUIProvider>
+  </React.StrictMode>,
+);
+
+
+
+
+import React, { useState } from "react";
+import { Textarea } from "@heroui/input";
+import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
+import PromptRecommendationBlock from "./PromptRecommendationBlock";
+
+export default function PromptBuilder() {
+  const [idea, setIdea] = useState("");
+  const [initialPrompt, setInitialPrompt] = useState("");
+  const [finalPrompt, setFinalPrompt] = useState("");
+  const [isReady, setIsReady] = useState(false);
+
+  const handleGenerateDraft = () => {
+    // Пример заглушки — в реальном случае будет вызов к AI
+    const cleaned = `Сформулируй: ${idea.trim()} — с деталями и задачами`;
+    setInitialPrompt(cleaned);
+    setFinalPrompt("");
+    setIsReady(false);
+  };
+
+  const handleGenerateFinalPrompt = () => {
+    // Пример — здесь будет вызов API для генерации финального промпта
+    const final = `🔍 Глубокий анализ запроса: "${initialPrompt}". Подключи лучшие практики, Docker-окружение, AI-модель и шаги реализации.`;
+    setFinalPrompt(final);
+    setIsReady(true);
+  };
+
+  return (
+    <section className="max-w-4xl mx-auto px-4 py-12 space-y-10">
+      <motion.div
+        className="space-y-4"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.1 }}
+      >
+        <h1 className="text-3xl font-bold text-center">🔧 Построй свой AI-промпт</h1>
+        <p className="text-center text-gray-500 max-w-xl mx-auto text-sm">
+          Введи свою идею, мы поможем ее оформить, уточнить и подберем лучшие модели для выполнения.
+        </p>
+      </motion.div>
+
+      <div className="space-y-4">
+        <label className="block font-medium text-gray-700">1. Введи свою идею или задачу</label>
+        <Textarea
+          rows={4}
+          placeholder="Например: Хочу создать React-приложение с Tailwind и AI-ботом"
+          value={idea}
+          onChange={(e) => setIdea(e.target.value)}
+        />
+        <Button
+          onClick={handleGenerateDraft}
+          disabled={!idea.trim()}
+          className="bg-blue-600 hover:bg-blue-700 text-white w-full"
+        >
+          ✨ Переформулировать и уточнить идею
+        </Button>
+      </div>
+
+      {initialPrompt && (
+        <motion.div
+          className="space-y-4"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+        >
+          <label className="block font-medium text-gray-700">
+            2. Уточнённый промпт (можно редактировать)
+          </label>
+          <Textarea
+            rows={4}
+            value={initialPrompt}
+            onChange={(e) => setInitialPrompt(e.target.value)}
+          />
+          <Button
+            onClick={handleGenerateFinalPrompt}
+            className="bg-emerald-600 hover:bg-emerald-700 text-white w-full"
+          >
+            🧠 Сгенерировать профессиональный промпт
+          </Button>
+        </motion.div>
+      )}
+
+      {finalPrompt && (
+        <motion.div
+          className="space-y-4 bg-gray-50 p-6 rounded-2xl border border-gray-200"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+        >
+          <h3 className="text-lg font-semibold text-gray-800">3. Готовый промпт</h3>
+          <Textarea rows={6} value={finalPrompt} readOnly className="bg-white" />
+        </motion.div>
+      )}
+
+      {isReady && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.4 }}
+        >
+          <PromptRecommendationBlock />
+        </motion.div>
+      )}
+    </section>
+  );
+}
+
+
+
+import React, { useState } from "react";
+import { Textarea } from "@heroui/input";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Sparkles, LoaderCircle } from "lucide-react";
+import { motion } from "framer-motion";
+
+export default function PromptBuilderPage() {
+  const [initialIdea, setInitialIdea] = useState("");
+  const [aiDraft, setAiDraft] = useState("");
+  const [finalPrompt, setFinalPrompt] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleInitialSubmit = async () => {
+    setLoading(true);
+    // simulate AI response
+    setTimeout(() => {
+      setAiDraft(`"${initialIdea}" — Отлично! Вот предварительная версия: \n\n${initialIdea} (начальный вариант от ИИ)`);
+      setLoading(false);
+    }, 1000);
+  };
+
+  const handleFinalize = async () => {
+    setLoading(true);
+    // simulate final AI processing
+    setTimeout(() => {
+      setFinalPrompt(`Окончательный промпт, глубоко проанализированный и оптимизированный: \n\n${aiDraft}`);
+      setLoading(false);
+    }, 1500);
+  };
+
+  return (
+    <div className="max-w-4xl mx-auto py-12 px-4 md:px-6">
+      <motion.h1 className="text-4xl font-bold text-center mb-4">
+        ✨ Построй свой идеальный промпт
+      </motion.h1>
+      <p className="text-center text-gray-600 max-w-xl mx-auto mb-10 text-sm">
+        Начни с описания своей задачи, и мы вместе с ИИ превратим её в эффективный промпт.
+      </p>
+
+      <Card className="mb-8">
+        <CardContent className="p-6 space-y-4">
+          <Textarea
+            placeholder="Опиши, что ты хочешь от ИИ..."
+            rows={4}
+            value={initialIdea}
+            onChange={(e) => setInitialIdea(e.target.value)}
+          />
+          <Button onClick={handleInitialSubmit} disabled={loading || !initialIdea}>
+            {loading ? <LoaderCircle className="animate-spin mr-2 h-4 w-4" /> : <Sparkles className="mr-2 h-4 w-4" />}Превратить в промпт
+          </Button>
+        </CardContent>
+      </Card>
+
+      {aiDraft && (
+        <Card className="mb-8 border-blue-400">
+          <CardContent className="p-6 space-y-4">
+            <Textarea
+              rows={6}
+              value={aiDraft}
+              onChange={(e) => setAiDraft(e.target.value)}
+            />
+            <Button className="bg-blue-600 text-white hover:bg-blue-700" onClick={handleFinalize}>
+              🤖 Завершить и сгенерировать финальный промпт
+            </Button>
+          </CardContent>
+        </Card>
+      )}
+
+      {finalPrompt && (
+        <Card className="border-green-400">
+          <CardContent className="p-6">
+            <h2 className="text-lg font-semibold mb-2 text-green-700">✅ Финальный промпт</h2>
+            <pre className="whitespace-pre-wrap text-sm text-gray-800 bg-green-50 p-4 rounded-xl border border-green-200">
+              {finalPrompt}
+            </pre>
+          </CardContent>
+        </Card>
+      )}
+    </div>
+  );
+}
+
+
+import React, { useState, useEffect } from "react";
+import { Textarea } from "@heroui/input";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Sparkles, LoaderCircle, Lightbulb } from "lucide-react";
+import { motion } from "framer-motion";
+import debounce from "lodash.debounce";
+
+export default function PromptBuilderPage() {
+  const [initialIdea, setInitialIdea] = useState("");
+  const [aiDraft, setAiDraft] = useState("");
+  const [finalPrompt, setFinalPrompt] = useState("");
+  const [suggestion, setSuggestion] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [typing, setTyping] = useState(false);
+
+  const simulateAiEnhancement = (text) => {
+    // Simulate AI improvement
+    setSuggestion(`💡 Подсказка: Попробуй уточнить цель задачи. Например: "${text.trim().slice(0, 40)}..."`);
+  };
+
+  const debouncedEnhance = debounce((text) => {
+    simulateAiEnhancement(text);
+    setTyping(false);
+  }, 1000);
+
+  useEffect(() => {
+    if (aiDraft) {
+      setTyping(true);
+      debouncedEnhance(aiDraft);
+    }
+  }, [aiDraft]);
+
+  const handleInitialSubmit = async () => {
+    setLoading(true);
+    setSuggestion("");
+    setTimeout(() => {
+      const draft = `"${initialIdea}"\n\n🔧 Черновик от ИИ: Преобразованный запрос на основе твоей идеи.`;
+      setAiDraft(draft);
+      setLoading(false);
+    }, 1000);
+  };
+
+  const handleFinalize = async () => {
+    setLoading(true);
+    setSuggestion("");
+    setTimeout(() => {
+      setFinalPrompt(`🧠 Финальный промпт, глубоко проанализированный и оптимизированный: \n\n${aiDraft}`);
+      setLoading(false);
+    }, 1500);
+  };
+
+  return (
+    <div className="max-w-4xl mx-auto py-12 px-4 md:px-6">
+      <motion.h1 className="text-4xl font-bold text-center mb-4">
+        ✨ Построй свой идеальный промпт
+      </motion.h1>
+      <p className="text-center text-gray-600 max-w-xl mx-auto mb-10 text-sm">
+        Начни с описания своей задачи, и мы вместе с ИИ превратим её в эффективный промпт.
+      </p>
+
+      <Card className="mb-8">
+        <CardContent className="p-6 space-y-4">
+          <Textarea
+            placeholder="Опиши, что ты хочешь от ИИ..."
+            rows={4}
+            value={initialIdea}
+            onChange={(e) => setInitialIdea(e.target.value)}
+          />
+          <Button onClick={handleInitialSubmit} disabled={loading || !initialIdea}>
+            {loading ? <LoaderCircle className="animate-spin mr-2 h-4 w-4" /> : <Sparkles className="mr-2 h-4 w-4" />}Превратить в промпт
+          </Button>
+        </CardContent>
+      </Card>
+
+      {aiDraft && (
+        <Card className="mb-8 border-blue-400">
+          <CardContent className="p-6 space-y-4">
+            <Textarea
+              rows={6}
+              value={aiDraft}
+              onChange={(e) => setAiDraft(e.target.value)}
+            />
+            {typing && <p className="text-sm text-gray-500">📝 Анализируем изменения...</p>}
+            {!typing && suggestion && (
+              <div className="text-sm text-yellow-800 bg-yellow-50 p-3 rounded-xl border border-yellow-200 flex items-start gap-2">
+                <Lightbulb className="mt-0.5 h-4 w-4 text-yellow-500" />
+                <span>{suggestion}</span>
+              </div>
+            )}
+            <Button className="bg-blue-600 text-white hover:bg-blue-700" onClick={handleFinalize}>
+              🤖 Завершить и сгенерировать финальный промпт
+            </Button>
+          </CardContent>
+        </Card>
+      )}
+
+      {finalPrompt && (
+        <Card className="border-green-400">
+          <CardContent className="p-6">
+            <h2 className="text-lg font-semibold mb-2 text-green-700">✅ Финальный промпт</h2>
+            <pre className="whitespace-pre-wrap text-sm text-gray-800 bg-green-50 p-4 rounded-xl border border-green-200">
+              {finalPrompt}
+            </pre>
+          </CardContent>
+        </Card>
+      )}
+    </div>
+  );
+}

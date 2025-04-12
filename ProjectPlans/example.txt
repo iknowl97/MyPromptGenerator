@@ -1,0 +1,156 @@
+import React, { useState, useEffect, useCallback } from "react";
+import { Textarea } from "@heroui/input";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Sparkles, LoaderCircle, Lightbulb } from "lucide-react";
+import { motion } from "framer-motion";
+import debounce from "lodash.debounce";
+
+export default function PromptBuilderPage() {
+  const [initialIdea, setInitialIdea] = useState("");
+  const [aiDraft, setAiDraft] = useState("");
+  const [finalPrompt, setFinalPrompt] = useState("");
+  const [suggestion, setSuggestion] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [typing, setTyping] = useState(false);
+  const [recommendations, setRecommendations] = useState([]);
+
+  const fetchSuggestions = useCallback(
+    debounce(async (text) => {
+      setTyping(true);
+      try {
+        const res = await fetch("/api/suggest", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ draft: text })
+        });
+        const data = await res.json();
+        setSuggestion(data.suggestion);
+      } catch (err) {
+        console.error("Ошибка при получении подсказки:", err);
+      } finally {
+        setTyping(false);
+      }
+    }, 1000), []);
+
+  useEffect(() => {
+    if (aiDraft) {
+      fetchSuggestions(aiDraft);
+    }
+  }, [aiDraft, fetchSuggestions]);
+
+  const handleInitialSubmit = async () => {
+    setLoading(true);
+    setSuggestion("");
+    try {
+      const res = await fetch("/api/draft", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ idea: initialIdea })
+      });
+      const data = await res.json();
+      setAiDraft(data.draft);
+    } catch (err) {
+      console.error("Ошибка при генерации черновика:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleFinalize = async () => {
+    setLoading(true);
+    setSuggestion("");
+    try {
+      const res = await fetch("/api/finalize", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ draft: aiDraft })
+      });
+      const data = await res.json();
+      setFinalPrompt(data.finalPrompt);
+      setRecommendations(data.recommendations || []);
+    } catch (err) {
+      console.error("Ошибка при финализации:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div className="max-w-4xl mx-auto py-12 px-4 md:px-6">
+      <motion.h1 className="text-4xl font-bold text-center mb-4">
+        ✨ Построй свой идеальный промпт
+      </motion.h1>
+      <p className="text-center text-gray-600 max-w-xl mx-auto mb-10 text-sm">
+        Начни с описания своей задачи, и мы вместе с ИИ превратим её в эффективный промпт.
+      </p>
+
+      <Card className="mb-8">
+        <CardContent className="p-6 space-y-4">
+          <Textarea
+            placeholder="Опиши, что ты хочешь от ИИ..."
+            rows={4}
+            value={initialIdea}
+            onChange={(e) => setInitialIdea(e.target.value)}
+          />
+          <Button onClick={handleInitialSubmit} disabled={loading || !initialIdea}>
+            {loading ? <LoaderCircle className="animate-spin mr-2 h-4 w-4" /> : <Sparkles className="mr-2 h-4 w-4" />}Превратить в промпт
+          </Button>
+        </CardContent>
+      </Card>
+
+      {aiDraft && (
+        <Card className="mb-8 border-blue-400">
+          <CardContent className="p-6 space-y-4">
+            <Textarea
+              rows={6}
+              value={aiDraft}
+              onChange={(e) => setAiDraft(e.target.value)}
+            />
+            {typing && <p className="text-sm text-gray-500">📝 Анализируем изменения...</p>}
+            {!typing && suggestion && (
+              <div className="text-sm text-yellow-800 bg-yellow-50 p-3 rounded-xl border border-yellow-200 flex items-start gap-2">
+                <Lightbulb className="mt-0.5 h-4 w-4 text-yellow-500" />
+                <span>{suggestion}</span>
+              </div>
+            )}
+            <Button className="bg-blue-600 text-white hover:bg-blue-700" onClick={handleFinalize}>
+              🤖 Завершить и сгенерировать финальный промпт
+            </Button>
+          </CardContent>
+        </Card>
+      )}
+
+      {finalPrompt && (
+        <Card className="border-green-400 mb-8">
+          <CardContent className="p-6">
+            <h2 className="text-lg font-semibold mb-2 text-green-700">✅ Финальный промпт</h2>
+            <pre className="whitespace-pre-wrap text-sm text-gray-800 bg-green-50 p-4 rounded-xl border border-green-200">
+              {finalPrompt}
+            </pre>
+          </CardContent>
+        </Card>
+      )}
+
+      {recommendations.length > 0 && (
+        <Card className="border-purple-400">
+          <CardContent className="p-6 space-y-4">
+            <h2 className="text-lg font-semibold text-purple-700">🔍 Рекомендуемые AI-модели и сервисы</h2>
+            <ul className="list-disc pl-6 space-y-2 text-sm text-gray-700">
+              {recommendations.map((rec, index) => (
+                <li key={index}>
+                  <span className="font-medium">{rec.name}:</span> {rec.description} 
+                  {rec.link && (
+                    <a href={rec.link} target="_blank" rel="noopener noreferrer" className="text-blue-600 underline ml-2">
+                      Перейти
+                    </a>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </CardContent>
+        </Card>
+      )}
+    </div>
+  );
+}
