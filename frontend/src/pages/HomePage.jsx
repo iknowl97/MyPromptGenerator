@@ -5,32 +5,34 @@ import { FiUser, FiEdit, FiCode, FiArrowRight } from 'react-icons/fi';
 const HomePage = () => {
   const navigate = useNavigate();
 
-  const handlePersonaSelect = (userType) => {
-    navigate(`/generate?userType=${userType}`);
-  };
-
-  const handleQuickPrompt = (promptType) => {
-    navigate(`/generate?userType=casual&promptType=${promptType}`);
+  const handleGenerateClick = () => {
+    navigate('/generate');
   };
 
   return (
-    <div className="hero-gradient-bg">
-      {/* Hero Section */}
+    <div className="min-h-screen bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-gray-900 dark:to-gray-800">
+      {/* Main Content */}
       <section className="container mx-auto px-4 py-16 md:py-24">
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-            AI Prompt Engineering Studio
+          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
+            Prompt Crafter Pro
           </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-300">
-            Precision-crafted prompts for any AI workflow
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            Craft perfect prompts for AI models with our advanced interface
           </p>
+          <button 
+            onClick={handleGenerateClick}
+            className="mt-8 px-8 py-3 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-lg transition-colors"
+          >
+            Start Crafting
+          </button>
         </div>
 
         {/* Persona Selection */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
           {/* AI Agent Developer Card */}
           <div 
-            className="hero-card p-6 cursor-pointer hover:border-primary-500 dark:hover:border-primary-400"
+            className="hero-card p-6 cursor-pointer hover:border-primary-500 dark:hover:border-primary-400 transform transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
             onClick={() => handlePersonaSelect('agent')}
           >
             <div className="flex items-center justify-center h-16 w-16 rounded-full bg-primary-100 dark:bg-primary-900 text-primary-600 dark:text-primary-300 mb-4 mx-auto">
@@ -57,7 +59,7 @@ const HomePage = () => {
 
           {/* Content Creator Card */}
           <div 
-            className="hero-card p-6 cursor-pointer hover:border-primary-500 dark:hover:border-primary-400"
+            className="hero-card p-6 cursor-pointer hover:border-primary-500 dark:hover:border-primary-400 transform transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
             onClick={() => handlePersonaSelect('content')}
           >
             <div className="flex items-center justify-center h-16 w-16 rounded-full bg-secondary-100 dark:bg-secondary-900 text-secondary-600 dark:text-secondary-300 mb-4 mx-auto">
@@ -84,7 +86,7 @@ const HomePage = () => {
 
           {/* Casual User Card */}
           <div 
-            className="hero-card p-6 cursor-pointer hover:border-primary-500 dark:hover:border-primary-400"
+            className="hero-card p-6 cursor-pointer hover:border-primary-500 dark:hover:border-primary-400 transform transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
             onClick={() => handlePersonaSelect('casual')}
           >
             <div className="flex items-center justify-center h-16 w-16 rounded-full bg-info-100 dark:bg-info-900 text-info-600 dark:text-info-300 mb-4 mx-auto">

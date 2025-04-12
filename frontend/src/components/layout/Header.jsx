@@ -21,12 +21,14 @@ const Header = () => {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-white dark:bg-gray-900 shadow-sm">
+    <header className="sticky top-0 z-50 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm shadow-sm border-b border-gray-100 dark:border-gray-800">
       <div className="container mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2" onClick={closeMenu}>
-            <span className="text-2xl font-bold text-primary-600 dark:text-primary-400">PromptGen Pro</span>
+            <div className="flex items-center">
+              <span className="text-2xl font-bold bg-gradient-to-r from-primary-600 to-secondary-600 text-transparent bg-clip-text">PromptGen Pro</span>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
@@ -61,10 +63,13 @@ const Header = () => {
           <div className="flex items-center space-x-4">
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none"
+              className="p-2 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200 relative overflow-hidden group focus:outline-none"
               aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
             >
-              {theme === 'light' ? <FiMoon size={20} /> : <FiSun size={20} />}
+              <div className="absolute inset-0 bg-gradient-to-r from-primary-100 to-secondary-100 dark:from-primary-900 dark:to-secondary-900 opacity-0 group-hover:opacity-100 transition-opacity duration-200 rounded-full"></div>
+              <div className="relative">
+                {theme === 'light' ? <FiMoon size={20} className="text-primary-600" /> : <FiSun size={20} className="text-yellow-500" />}
+              </div>
             </button>
 
             <button
