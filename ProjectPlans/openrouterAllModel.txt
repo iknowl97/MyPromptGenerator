@@ -1,0 +1,102 @@
+| All Models | FREE Models |
+|--------------------------------------------|-----------------------------------------------|
+| 01-ai/yi-large | |
+| aetherwiing/mn-starcannon-12b | |
+| ai21/jamba-1-5-large | |
+| ai21/jamba-1-5-mini | |
+| ai21/jamba-1.6-large | |
+| ai21/jamba-1.6-mini | |
+| ai21/jamba-instruct | |
+| aion-labs/aion-1.0 | |
+| aion-labs/aion-1.0-mini | |
+| aion-labs/aion-rp-llama-3.1-8b | |
+| all-hands/openhands-lm-32b-v0.1 | |
+| allenai/molmo-7b-d:free | allenai/molmo-7b-d:free |
+| allenai/olmo-2-0325-32b-instruct | |
+| alpindale/goliath-120b | |
+| alpindale/magnum-72b | |
+| amazon/nova-lite-v1 | |
+| amazon/nova-micro-v1 | |
+| amazon/nova-pro-v1 | |
+| anthracite-org/magnum-v2-72b | |
+| anthracite-org/magnum-v4-72b | |
+| anthropic/claude-2 | |
+| anthropic/claude-2.0 | |
+| anthropic/claude-2.0:beta | |
+| anthropic/claude-2.1 | |
+| anthropic/claude-2.1:beta | |
+| anthropic/claude-2:beta | |
+| anthropic/claude-3-haiku | |
+| anthropic/claude-3-haiku:beta | |
+| anthropic/claude-3-opus | |
+| anthropic/claude-3-opus:beta | |
+| anthropic/claude-3-sonnet | |
+| anthropic/claude-3-sonnet:beta | |
+| anthropic/claude-3.5-haiku | |
+| anthropic/claude-3.5-haiku-20241022 | |
+| anthropic/claude-3.5-haiku-20241022:beta | |
+| anthropic/claude-3.5-haiku:beta | |
+| anthropic/claude-3.5-sonnet | |
+| anthropic/claude-3.5-sonnet-20240620 | |
+| anthropic/claude-3.5-sonnet-20240620:beta | |
+| anthropic/claude-3.5-sonnet:beta | |
+| anthropic/claude-3.7-sonnet | |
+| anthropic/claude-3.7-sonnet:beta | |
+| anthropic/claude-3.7-sonnet:thinking | |
+| bytedance-research/ui-tars-72b:free | bytedance-research/ui-tars-72b:free |
+| cognitivecomputations/dolphin-mixtral-8x22b | |
+| cognitivecomputations/dolphin-mixtral-8x7b | |
+| cognitivecomputations/dolphin3.0-mistral-24b:free | cognitivecomputations/dolphin3.0-mistral-24b:free |
+| cognitivecomputations/dolphin3.0-r1-mistral-24b:free | cognitivecomputations/dolphin3.0-r1-mistral-24b:free |
+| cohere/command | |
+| cohere/command-a | |
+| cohere/command-r | |
+| cohere/command-r-03-2024 | |
+| cohere/command-r-08-2024 | |
+| cohere/command-r-plus | |
+| cohere/command-r-plus-04-2024 | |
+| cohere/command-r-plus-08-2024 | |
+| cohere/command-r7b-12-2024 | |
+| deepseek/deepseek-chat | |
+| deepseek/deepseek-chat-v3-0324 | |
+| deepseek/deepseek-chat-v3-0324:free | deepseek/deepseek-chat-v3-0324:free |
+| deepseek/deepseek-chat:free | deepseek/deepseek-chat:free |
+| deepseek/deepseek-r1 | |
+| deepseek/deepseek-r1-distill-llama-70b | |
+| deepseek/deepseek-r1-distill-llama-70b:free | deepseek/deepseek-r1-distill-llama-70b:free |
+| deepseek/deepseek-r1-distill-llama-8b | |
+| deepseek/deepseek-r1-distill-qwen-1.5b | |
+| deepseek/deepseek-r1-distill-qwen-14b | |
+| deepseek/deepseek-r1-distill-qwen-14b:free | deepseek/deepseek-r1-distill-qwen-14b:free |
+| deepseek/deepseek-r1-distill-qwen-32b | |
+| deepseek/deepseek-r1-distill-qwen-32b:free | deepseek/deepseek-r1-distill-qwen-32b:free |
+| deepseek/deepseek-r1-zero:free | deepseek/deepseek-r1-zero:free |
+| deepseek/deepseek-r1:free | deepseek/deepseek-r1:free |
+| deepseek/deepseek-v3-base:free | deepseek/deepseek-v3-base:free |
+| eva-unit-01/eva-llama-3.33-70b | |
+| eva-unit-01/eva-qwen-2.5-32b | |
+| eva-unit-01/eva-qwen-2.5-72b | |
+| featherless/qwerky-72b:free | featherless/qwerky-72b:free |
+| google/gemini-2.0-flash-001 | |
+| google/gemini-2.0-flash-exp:free | google/gemini-2.0-flash-exp:free |
+| google/gemini-2.0-flash-lite-001 | |
+| google/gemini-2.0-flash-thinking-exp-1219:free | google/gemini-2.0-flash-thinking-exp-1219:free |
+| google/gemini-2.0-flash-thinking-exp:free | google/gemini-2.0-flash-thinking-exp:free |
+| google/gemini-2.5-pro-exp-03-25:free | google/gemini-2.5-pro-exp-03-25:free |
+| google/gemini-2.5-pro-preview-03-25 | |
+| google/gemini-flash-1.5 | |
+| google/gemini-flash-1.5-8b | |
+| google/gemini-flash-1.5-8b-exp | |
+| google/gemini-pro | |
+| google/gemini-pro-1.5 | |
+| google/gemini-pro-vision | |
+| google/gemma-2-27b-it | |
+| google/gemma-2-9b-it | |
+| google/gemma-2-9b-it:free | google/gemma-2-9b-it:free |
+| google/gemma-3-12b-it | |
+| google/gemma-3-12b-it:free | google/gemma-3-12b-it:free |
+| google/gemma-3-1b-it:free | google/gemma-3-1b-it:free |
+| google/gemma-3-27b-it | |
+| google/gemma-3-27b-it:free | google/gemma-3-27b-it:free |
+| google/gemma-3-4b-it | |
+| google/gemma-3-4b-it:free | google/gemma-3-4b-it:free |
